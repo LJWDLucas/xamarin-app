@@ -3,11 +3,12 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using studybuddyv2.Models;
 using studybuddyv2.Services;
+using studybuddyv2.Views;
 using Xamarin.Forms;
 
 namespace studybuddyv2.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class LoginViewModel : INotifyPropertyChanged
     {
         public string Email { get; set; }
         public string Password { get; set; }
@@ -17,7 +18,7 @@ namespace studybuddyv2.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public MainPageViewModel()
+        public LoginViewModel()
         {
             HandleOnLoginCommand = new Command(async () => await LoginUser());
             ShowError = false;
@@ -58,6 +59,7 @@ namespace studybuddyv2.ViewModels
             if (result)
             {
                 SetErrorMessage("", false);
+                Application.Current.MainPage = new MainPage();
             }
             else
             {

@@ -3,8 +3,11 @@ namespace studybuddyv2.ViewModels
 {
     public class MainPageViewModel
     {
-        public MainPageViewModel()
+        string Id = "";
+
+        public MainPageViewModel(string id)
         {
+            Id = id;
         }
     }
 }

@@ -56,10 +56,10 @@ namespace studybuddyv2.ViewModels
 
             var result = await HttpService.LoginUser(Email, Password);
 
-            if (result)
+            if (result != "")
             {
                 SetErrorMessage("", false);
-                Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new MainPage(result);
             }
             else
             {

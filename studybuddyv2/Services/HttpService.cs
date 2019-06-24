@@ -14,16 +14,26 @@ namespace studybuddyv2.Services
         private static WebClient client = new WebClient();
         private static string JWT { get; set; }
 
-        private static JsonSerializerSettings GetJsonSerializerSettings ()
+        public static JsonSerializerSettings GetJsonSerializerSettings ()
         {
             var sSettings = new JsonSerializerSettings();
             sSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             return sSettings;
         }
 
-        private static Uri GetUri(string address)
+        public static Uri GetUri(string address)
         {
             return new Uri(string.Format(address));
+        }
+
+        public static WebClient GetWebClient()
+        {
+            return client;
+        }
+
+        public static string GetJWT()
+        {
+            return JWT;
         }
 
         public static async Task<bool> RegisterUser(string email, string password)
@@ -43,22 +53,23 @@ namespace studybuddyv2.Services
             return true;
         }
 
-        public static async Task<bool> LoginUser(string email, string password)
+        public static async Task<string> LoginUser(string email, string password)
         {
             var body = JsonConvert.SerializeObject(new TempUser(email, password), GetJsonSerializerSettings());
-
+            var id = "";
             try
             {
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 string response = await client.UploadStringTaskAsync(GetUri(Constants.BaseAddress + Constants.LoginPath), "POST", body);
                 LoginUser loginUser = JsonConvert.DeserializeObject<LoginUser>(response);
                 JWT = loginUser.Token;
+                id = loginUser.Payload;
             }
             catch (Exception ex)
             {
-                return false;
+                return id;
             }
-            return true;
+            return id;
         }
     }
 
@@ -78,5 +89,6 @@ namespace studybuddyv2.Services
     {
         public bool Success { get; set; }
         public string Token { get; set; } 
+        public string Payload { get; set; }
     }
 }

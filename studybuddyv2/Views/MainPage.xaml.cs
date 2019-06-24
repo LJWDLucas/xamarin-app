@@ -7,10 +7,26 @@ namespace studybuddyv2.Views
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+
+        public MainPage(string id)
         {
             InitializeComponent();
-            BindingContext = new MainPageViewModel();
+            BindingContext = new MainPageViewModel(id);
+        }
+
+        void Handle_Create(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new CreateAssignmentPage());
+        }
+
+        void Handle_Edit(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new EditAssignmentPage());
+        }
+
+        void Handle_Find(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new FindAssignmentPage());
         }
     }
 }

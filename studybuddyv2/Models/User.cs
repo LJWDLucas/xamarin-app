@@ -24,5 +24,7 @@ namespace studybuddyv2.Models
         {
             this.Email = email;
         }
+
+        public User() { }
     }
 }

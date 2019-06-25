@@ -17,5 +17,6 @@ namespace studybuddyv2.Views
         {
             Navigation.PopModalAsync(true);
         }
+
     }
 }

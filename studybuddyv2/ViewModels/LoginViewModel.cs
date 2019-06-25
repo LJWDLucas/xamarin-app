@@ -55,10 +55,10 @@ namespace studybuddyv2.ViewModels
             }
 
             var result = await HttpService.LoginUser(Email, Password);
-
             if (result != "")
             {
                 SetErrorMessage("", false);
+                App.CurrentUser = result;
                 Application.Current.MainPage = new MainPage(result);
             }
             else
@@ -68,4 +68,5 @@ namespace studybuddyv2.ViewModels
             return true;
         }
     }
+
 }

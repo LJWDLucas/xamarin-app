@@ -25,7 +25,7 @@ namespace studybuddyv2.Services
             {
                 return result;
             }
-
+            result = true;
             return result;
         }
     }

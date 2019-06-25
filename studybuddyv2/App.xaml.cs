@@ -1,4 +1,5 @@
 ﻿using System;
+using studybuddyv2.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,6 +7,7 @@ namespace studybuddyv2
 {
     public partial class App : Application
     {
+        public static string CurrentUser { get; set; }
         public App()
         {
             InitializeComponent();

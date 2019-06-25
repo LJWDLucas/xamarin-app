@@ -13,12 +13,15 @@ namespace studybuddyv2.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public string AssignmentName { get; set; }
         public string Body { get; set; }
-        public bool CreateError { get; set; }
+        public bool SubmitSuccess { get; set; }
+        public bool SubmitError { get; set; }
+        public bool IsSubmitting { get; set; }
 
         public CreateAssignmentViewModel()
         {
             HandleSubmitCommand = new Command(async () => await CreateAssignment());
-            CreateError = false;
+            IsSubmitting = false;
+            SubmitError = false;
         }
 
         public List<ScoringMechanism> ItemsList { get; } = new List<ScoringMechanism>
@@ -48,12 +51,17 @@ namespace studybuddyv2.ViewModels
                 ScoreMechanism = selectedItem.Id,
                 UserId = App.CurrentUser
             };
+            IsSubmitting = true;
             var result = await AssignmentClient.CreateAssignment(assignment);
+            IsSubmitting = false;
             if(result)
             {
+                AssignmentName = "";
+                Body = "";
+                SubmitSuccess = true;
                 return true;
             }
-            CreateError = true;
+            SubmitError = true;
             return false;
         }
     }

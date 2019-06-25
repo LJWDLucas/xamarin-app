@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="studybuddyv2.Views.FindAssignmentPage">
     <ContentPage.Content>
-        <Grid RowSpacing="0">
+        <Grid RowSpacing="0" Padding="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
                 <RowDefinition Height="60" />  
             </Grid.RowDefinitions>
-            
-            <Button Text="Find" Grid.Row="2"/>
-            <Button Text="Back" Grid.Row="3" Clicked="Handle_Clicked" />
+            <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsLoading}" />
+            <ListView Grid.Row="1"
+                ItemsSource="{Binding List}"
+                SelectedItem="{Binding SelectedItem}"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding AssignmentName}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>    
+            </ListView>
+            <Button Grid.Row="2" IsVisible="{Binding HasSelected}" Text="Open" Command="{Binding OpenAssignmentCommand}" />
+            <Button Text="Find my assignments" Grid.Row="3" Command="{Binding GetAssignmentsCommand}"/>
+            <Button Text="Back" Grid.Row="4" Clicked="Handle_Clicked" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

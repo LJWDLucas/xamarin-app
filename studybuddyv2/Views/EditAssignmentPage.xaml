@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="studybuddyv2.Views.EditAssignmentPage">
     <ContentPage.Content>
-        <Grid RowSpacing="0">
+        <Grid RowSpacing="0" Padding="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60" />
                 <RowDefinition Height="60" />  
             </Grid.RowDefinitions>
-            <Button Text="Save" Grid.Row="2"/>
+            <StackLayout Grid.Row="1">
+                <Label Text="{Binding _assignment.AssignmentName}"/>
+                <Label Text="{Binding _assignment.Body}"/>
+                <Label Text="{Binding GetScoreMechanism}" />
+            </StackLayout>
+            <Button Text="Delete" Grid.Row="2"/>
             <Button Text="Back" Grid.Row="3" Clicked="Handle_Clicked" />
         </Grid>
     </ContentPage.Content>

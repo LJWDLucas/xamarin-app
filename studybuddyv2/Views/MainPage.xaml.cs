@@ -19,11 +19,6 @@ namespace studybuddyv2.Views
             Navigation.PushModalAsync(new CreateAssignmentPage());
         }
 
-        void Handle_Edit(object sender, System.EventArgs e)
-        {
-            Navigation.PushModalAsync(new EditAssignmentPage());
-        }
-
         void Handle_Find(object sender, System.EventArgs e)
         {
             Navigation.PushModalAsync(new FindAssignmentPage());

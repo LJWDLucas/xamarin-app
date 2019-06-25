@@ -10,7 +10,7 @@ namespace studybuddyv2.Views
         public FindAssignmentPage()
         {
             InitializeComponent();
-            BindingContext = new FindAssignmentViewModel();
+            BindingContext = new FindAssignmentViewModel(Navigation);
         }
 
         void Handle_Clicked(object sender, System.EventArgs e)

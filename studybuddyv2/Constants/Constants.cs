@@ -10,5 +10,6 @@ namespace studybuddyv2
         public static string LoginPath = "/auth/login";
         public static string RegisterPath = "/auth/create";
         public static string CreateAssignmentPath = "/assignments/create";
+        public static string AssignmentsPath = "/assignments";
     }
 }

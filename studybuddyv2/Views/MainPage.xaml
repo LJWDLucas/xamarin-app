@@ -10,8 +10,7 @@
             <Label Grid.Row="0" Text="Assignments" />
             <FlexLayout Grid.Row="1">
                 <Button Text="Create" Clicked="Handle_Create" />
-                <Button Text="Edit" Clicked="Handle_Edit"/>  
-                <Button Text="Find" Clicked="Handle_Find"/>
+                <Button Text="Manage" Clicked="Handle_Find"/>
             </FlexLayout>
         </Grid>
     </ContentPage.Content>

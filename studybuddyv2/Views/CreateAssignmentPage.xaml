@@ -6,11 +6,16 @@
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
                 <RowDefinition Height="60" />  
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="Create an assignment" />
+            <Label Grid.Row="0" Text="Create an assignment" HorizontalTextAlignment="Center" />
             <ScrollView Grid.Row="1">
                 <StackLayout Padding="0,10,0,0">
+                    <FlexLayout JustifyContent="SpaceEvenly">
+                       <Label IsVisible="{Binding SubmitError}" Text="Submit failed."/>
+                       <Label IsVisible="{Binding SubmitSuccess}" Text="Submit succeeded."/>
+                    </FlexLayout>
                     <Entry Placeholder="Assignment name" Text="{Binding AssignmentName}"/>
                     <Editor Placeholder="Fill in additional information about the assignment" Text="{Binding Body}"/>
                     <Label Text="Selected a scoring mechanism" />
@@ -23,11 +28,12 @@
                                 <TextCell Text="{Binding Name}"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>    
-                    </ListView> 
+                    </ListView>
                 </StackLayout>
             </ScrollView>
-            <Button Text="Create" Grid.Row="2" Command="{Binding HandleSubmitCommand}"/>
-            <Button Text="Back" Grid.Row="3" Clicked="Handle_Clicked" />
+            <ActivityIndicator Grid.Row="2" IsRunning="{Binding IsSubmitting}" />
+            <Button Text="Create" Grid.Row="3" Command="{Binding HandleSubmitCommand}"/>
+            <Button Text="Back" Grid.Row="4" Clicked="Handle_Clicked" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

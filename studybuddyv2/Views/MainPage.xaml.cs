@@ -23,5 +23,10 @@ namespace studybuddyv2.Views
         {
             Navigation.PushModalAsync(new FindAssignmentPage());
         }
+
+        void Handle_Open(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new NavigationPage(new ManageDeliverablePage()));
+        }
     }
 }

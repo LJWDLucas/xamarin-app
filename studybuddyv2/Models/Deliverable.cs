@@ -1,15 +1,14 @@
 ﻿using System;
+using Newtonsoft.Json;
+
 namespace studybuddyv2.Models
 {
     public class Deliverable
     {
-        string Id { get; set; }
-        string AssignmentId { get; set; }
-        string UserId { get; set; }
-        string Body { get; set; }
+        public string Id { get; set; }
+        public string AssignmentId { get; set; }
+        public string UserId { get; set; }
+        public string Body { get; set; }
 
-        public Deliverable()
-        {
-        }
     }
 }

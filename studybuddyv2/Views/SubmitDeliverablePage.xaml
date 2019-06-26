@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="studybuddyv2.Views.SubmitDeliverablePage">
+    <ContentPage.Content>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <ActivityIndicator IsRunning="{Binding IsLoading}" />
+            <StackLayout Grid.Row="1">
+                <Label Text="Add your submission" />
+                <Editor Text="{Binding Body}" Placeholder="Placeholder for file submission. Only text submission is possible at the moment." />
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label IsVisible="{Binding Success}" Text="Submission received!" />
+                    <Label IsVisible="{Binding Failure}" Text="Submission failed to upload." />
+                </FlexLayout>
+            </StackLayout>
+            <Button Grid.Row="2" Text="Submit" Command="{Binding SubmitDeliverableCommand}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

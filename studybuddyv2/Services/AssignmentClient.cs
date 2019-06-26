@@ -30,14 +30,14 @@ namespace studybuddyv2.Services
             return result;
         }
 
-        public static async Task<List<Assignment>> GetAssignmentsAsync()
+        public static async Task<List<Assignment>> GetAssignmentsAsync(string route)
         {
             List<Assignment> list;
             try
             {
                 var client = HttpService.GetWebClient();
                 client.Headers[HttpRequestHeader.Authorization] = HttpService.GetJWT();
-                string response = await client.DownloadStringTaskAsync(HttpService.GetUri(Constants.BaseAddress + Constants.ApiVersion + Constants.AssignmentsPath + "/createdBy/" + App.CurrentUser));
+                string response = await client.DownloadStringTaskAsync(HttpService.GetUri(route));
                 var result = JsonConvert.DeserializeObject<GetAssignmentsResponse>(response);
                 list = result.Payload;
             } catch
@@ -46,6 +46,7 @@ namespace studybuddyv2.Services
             }
             return list;
         }
+
     }
 
     public class GetAssignmentsResponse 

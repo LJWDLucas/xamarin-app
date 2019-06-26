@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace studybuddyv2.ViewModels
 {
-    public class FindAssignmentViewModel : INotifyPropertyChanged
+    public class ManageDeliverableViewModel : INotifyPropertyChanged
     {
         public bool IsLoading { get; set; }
         public bool NoAssignments { get; set; }
@@ -18,7 +18,7 @@ namespace studybuddyv2.ViewModels
         public INavigation Navigation { get; set; }
         public ObservableCollection<Assignment> List { get; set; }
 
-        public FindAssignmentViewModel(INavigation navigation)
+        public ManageDeliverableViewModel(INavigation navigation)
         {
             IsLoading = false;
             NoAssignments = false;
@@ -49,23 +49,25 @@ namespace studybuddyv2.ViewModels
         {
             if (selectedItem != null)
             {
-               await Navigation.PushModalAsync(new EditAssignmentPage(selectedItem));
+                await Navigation.PushAsync(new SubmitDeliverablePage(selectedItem));
             }
         }
 
         public async Task GetAssignments()
         {
             IsLoading = true;
-            List<Assignment> result = await AssignmentClient.GetAssignmentsAsync(Constants.BaseAddress + Constants.ApiVersion + Constants.AssignmentsPath + "/createdBy/" + App.CurrentUser);
+            List<Assignment> result = await AssignmentClient.GetAssignmentsAsync(Constants.BaseAddress + Constants.ApiVersion + Constants.AssignmentsPath);
             IsLoading = false;
             if (result.Count > 0)
             {
                 NoAssignments = false;
                 List = new ObservableCollection<Assignment>(result);
-            } else
+            }
+            else
             {
                 NoAssignments = true;
             }
         }
+
     }
 }

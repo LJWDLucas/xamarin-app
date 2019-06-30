@@ -12,6 +12,10 @@
                 <Label Text="{Binding _assignment.AssignmentName}"/>
                 <Label Text="{Binding _assignment.Body}"/>
                 <Label Text="{Binding GetScoreMechanism}" />
+                <FlexLayout>
+                    <Label Text="Number of deliverables submitted: " />
+                    <Label Text="{Binding GetNumberOfDeliverables}" />
+                </FlexLayout>
             </StackLayout>
             <Button Text="Delete" Grid.Row="2"/>
             <Button Text="Back" Grid.Row="3" Clicked="Handle_Clicked" />

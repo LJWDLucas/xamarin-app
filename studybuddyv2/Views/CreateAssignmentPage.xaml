@@ -16,12 +16,13 @@
                        <Label IsVisible="{Binding SubmitError}" Text="Submit failed."/>
                        <Label IsVisible="{Binding SubmitSuccess}" Text="Submit succeeded."/>
                     </FlexLayout>
-                    <Entry Placeholder="Assignment name" Text="{Binding AssignmentName}"/>
-                    <Editor Placeholder="Fill in additional information about the assignment" Text="{Binding Body}"/>
+                    <Entry AutomationId="EntryId" Placeholder="Assignment name" Text="{Binding AssignmentName}"/>
+                    <Editor AutomationId="EditorId" Placeholder="Fill in additional information about the assignment" Text="{Binding Body}"/>
                     <Label Text="Selected a scoring mechanism" />
                     <ListView
                         ItemsSource="{Binding ItemsList}"
                         SelectedItem="{Binding SelectedItem}"
+                        AutomationId="ListViewId"
                         >
                         <ListView.ItemTemplate>
                             <DataTemplate>

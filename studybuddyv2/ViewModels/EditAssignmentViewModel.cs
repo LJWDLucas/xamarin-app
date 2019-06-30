@@ -12,6 +12,11 @@ namespace studybuddyv2.ViewModels
             _assignment = assignment;
         }
 
+        public int GetNumberOfDeliverables
+        {
+            get => _assignment.DeliveredAssignments.Count;
+        }
+
         public string GetScoreMechanism
         {
             get

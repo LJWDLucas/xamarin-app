@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using studybuddyv2.Services;
 using studybuddyv2.ViewModels;
 using Xamarin.Forms;
 
@@ -27,6 +28,13 @@ namespace studybuddyv2.Views
         void Handle_Open(object sender, System.EventArgs e)
         {
             Navigation.PushModalAsync(new NavigationPage(new ManageDeliverablePage()));
+        }
+
+        void Handle_Logout(object sender, System.EventArgs e)
+        {
+            App.CurrentUser = "";
+            HttpService.ResetJWT();
+            Application.Current.MainPage = new LoginPage();
         }
     }
 }

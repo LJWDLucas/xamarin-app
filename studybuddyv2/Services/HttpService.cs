@@ -14,7 +14,7 @@ namespace studybuddyv2.Services
         private static WebClient client = new WebClient();
         private static string JWT { get; set; }
 
-        public static JsonSerializerSettings GetJsonSerializerSettings ()
+        public static JsonSerializerSettings GetJsonSerializerSettings()
         {
             var sSettings = new JsonSerializerSettings();
             sSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -34,6 +34,11 @@ namespace studybuddyv2.Services
         public static string GetJWT()
         {
             return JWT;
+        }
+
+        public static void ResetJWT()
+        {
+            JWT = "";
         }
 
         public static async Task<bool> RegisterUser(string email, string password)

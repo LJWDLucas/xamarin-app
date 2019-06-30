@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="studybuddyv2.Views.MainPage">
     <ContentPage.Content>
-        <Grid Padding="20">
+        <Grid Padding="20" AutomationId="MainPageGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0" />
-                <RowDefinition Height="*"/>  
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80" />
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*" />  
+                    <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0">
                     <Label Text="Assignments" />
                     <FlexLayout>
-                        <Button Text="Create" Clicked="Handle_Create" />
+                        <Button Text="Create" Clicked="Handle_Create" AutomationId="CreateButton" />
                         <Button Text="Manage" Clicked="Handle_Find"/>
                     </FlexLayout>
                 </StackLayout>
@@ -25,6 +26,9 @@
                         <Button Text="Open" Clicked="Handle_Open" />
                     </FlexLayout>
                 </StackLayout>
+                <FlexLayout Grid.Row="3">
+                    <Button Text="Logout" Clicked="Handle_Logout"/>
+                </FlexLayout>
             </Grid>
         </Grid>
     </ContentPage.Content>
